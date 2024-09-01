@@ -14,15 +14,16 @@ use App\Http\Controllers\Admin\ValuesController;
 use App\Http\Controllers\Admin\FuelingBrandController;
 use App\Http\Controllers\Admin\WhatWeDoController;
 use App\Http\Controllers\Admin\TeamMembersController;
+use App\Http\Controllers\Admin\ServicesController;
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
 // })->middleware('auth:api');
 
-//Login Routes
+// //Login Routes
 Route::post('/login',[AuthController::class, 'Login']);
 
-//Register Routes
+// //Register Routes
 Route::post('/register',[AuthController::class, 'Register']);
 
 //Forget Password Routes
@@ -32,7 +33,11 @@ Route::post('/forgetpassword',[ForgetController::class, 'ForgetPassword']);
 Route::post('/resetpassword',[ResetController::class, 'ResetPassword']);
 
 //Current User Route
-// Route::get('/user',[UserController::class, 'User'])->middleware('auth:api');
+Route::get('/user',[UserController::class, 'User'])->middleware('auth:api');
+
+//
+
+
 
 //Get Visitor Details
 Route::get('/getvisitor', [VisitorController::class, 'GetVisitorDetails']);
@@ -50,3 +55,17 @@ Route::get('/fuelingbrand', [FuelingBrandController::class, 'FuelingBrand']);
 Route::get('/whatwedo', [WhatWeDoController::class, 'WhatWeDoDetails']);
 
 Route::get('/team-members', [TeamMembersController::class, 'TeamMembersDetails']);
+
+//All Services Route
+
+Route::get('/allservices', [ServicesController::class, 'AllServices']);
+Route::get('/strategy', [ServicesController::class, 'Strategy']);
+Route::get('/strategysub', [ServicesController::class, 'StrategySub']);
+Route::get('strategydetails',[ServicesController::class, 'StrategySubDetails']);
+
+///Services CRUD
+Route::get('services', [ServicesController::class, 'index']); 
+Route::get('services/{id}', [ServicesController::class, 'show']); 
+Route::post('services', [ServicesController::class, 'store']); 
+Route::put('servicesupdate/{id}', [ServicesController::class, 'update']);
+Route::delete('servicesdelete/{id}', [ServicesController::class, 'destroy']);

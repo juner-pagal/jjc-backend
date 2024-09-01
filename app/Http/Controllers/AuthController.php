@@ -15,10 +15,10 @@ class AuthController extends Controller
         try{
             if(Auth::attempt($request->only('email','password'))){
                 $user = Auth::user();
-                $token = $user->createToken('app')->accessToken;
+                $token = $user->createToken('app')->plainTextToken; // accessToken;
 
                 return response([
-                    'message' => 'Successfully Login',
+                    'message' => 'Successfully Login', 
                     'token' => $token,
                     'user' => $user
                 ],200); //States Code
