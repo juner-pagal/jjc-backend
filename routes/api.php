@@ -67,5 +67,5 @@ Route::get('strategydetails',[ServicesController::class, 'StrategySubDetails']);
 Route::get('services', [ServicesController::class, 'index']); 
 Route::get('services/{id}', [ServicesController::class, 'show']); 
 Route::post('services', [ServicesController::class, 'store']); 
-Route::put('servicesupdate/{id}', [ServicesController::class, 'update']);
+Route::put('/servicesupdate/{id}', [ServicesController::class, 'update']);
 Route::delete('servicesdelete/{id}', [ServicesController::class, 'destroy']);

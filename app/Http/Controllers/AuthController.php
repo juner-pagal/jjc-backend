@@ -22,6 +22,10 @@ class AuthController extends Controller
                     'token' => $token,
                     'user' => $user
                 ],200); //States Code
+            }else{
+                return  response([
+                    'message' => 'Incorrect Email or Password'
+                ],401);
             }
         }catch(Exception $exception){
             return response([

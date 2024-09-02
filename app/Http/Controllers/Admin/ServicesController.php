@@ -11,6 +11,7 @@ use App\Http\Requests\ServicesStoreRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
+
 class ServicesController extends Controller
 {
     public function AllServices(){
@@ -89,8 +90,9 @@ class ServicesController extends Controller
      */
     public function store(ServicesStoreRequest $request)
     {
+        
         try{
-            $imageName = Str::random(32).".".$request->image->getClientOriginalExtension();
+            $imageName = Str::random(32).".".$request->services_image->getClientOriginalExtension();
             
             //Create Services
             Services::create([
@@ -102,7 +104,7 @@ class ServicesController extends Controller
             /**
              * Save Image in Storage folder
              */
-            Storage::disk('public')->put($imageName, file_get_contents($request->image));
+            Storage::disk('public')->put($imageName, file_get_contents($request->services_image));
 
             //Return Json Response
             return response()->json([
@@ -120,7 +122,7 @@ class ServicesController extends Controller
     public function show($id)
     {
         //Services Detail
-        $services = Product::find($id);
+        $services = Services::find($id);
        if(!$services){
          return response()->json([
             'message'=>'Services Not Found.'
@@ -194,16 +196,16 @@ class ServicesController extends Controller
         // Public storage
         $storage = Storage::disk('public');
       
-        // Iamge delete
+        // Image delete
         if($storage->exists($services->services_image))
-            $storage->delete($services->customer_image);
+            $storage->delete($services->services_image);
       
         // Delete Product
         $services->delete();
       
         // Return Json Response
         return response()->json([
-            'message' => "Product successfully deleted."
+            'message' => "Services successfully deleted."
         ],200);
     }
 

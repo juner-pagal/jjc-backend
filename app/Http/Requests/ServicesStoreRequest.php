@@ -27,14 +27,14 @@ class ServicesStoreRequest extends FormRequest
                 'services_name' => 'required|string|max:258',
                 'services_caption' => 'required|string|max:258',
                 'services_desc' => 'required|string',
-                'services_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|2048'
+                'services_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
             ];
         }else{
             return [
                 'services_name' => 'required|string|max:258',
                 'services_caption' => 'required|string|max:258',
                 'services_desc' => 'required|string',
-                'services_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|2048'
+                'services_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
             ];
         }
     }
