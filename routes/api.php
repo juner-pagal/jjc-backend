@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\FuelingBrandController;
 use App\Http\Controllers\Admin\WhatWeDoController;
 use App\Http\Controllers\Admin\TeamMembersController;
 use App\Http\Controllers\Admin\ServicesController;
+use App\Http\Controllers\Admin\SubServicesController;
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
@@ -69,3 +70,13 @@ Route::get('services/{id}', [ServicesController::class, 'show']);
 Route::post('services', [ServicesController::class, 'store']); 
 Route::put('/servicesupdate/{id}', [ServicesController::class, 'update']);
 Route::delete('servicesdelete/{id}', [ServicesController::class, 'destroy']);
+
+//Services Section CRUD
+Route::get('subservices', [SubServicesController::class, 'index']);
+
+Route::post('addsubservices',[SubServicesController::class, 'store']);
+
+Route::get('subservices/{id}', [SubServicesController::class, 'show']); 
+
+
+////Team Members Section CRUD
