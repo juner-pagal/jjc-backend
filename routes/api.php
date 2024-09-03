@@ -55,7 +55,7 @@ Route::get('/fuelingbrand', [FuelingBrandController::class, 'FuelingBrand']);
 
 Route::get('/whatwedo', [WhatWeDoController::class, 'WhatWeDoDetails']);
 
-Route::get('/team-members', [TeamMembersController::class, 'TeamMembersDetails']);
+
 
 //All Services Route
 
@@ -80,3 +80,5 @@ Route::get('subservices/{id}', [SubServicesController::class, 'show']);
 
 
 ////Team Members Section CRUD
+Route::get('/team-members', [TeamMembersController::class, 'TeamMembersDetails']);
+Route::post('addteammembers',[TeamMembersController::class, 'store']);
